@@ -2,7 +2,7 @@
 
 Convert bootstrap sass to postcss
 
-# Dependencies
+# postcss required dependencies
 
 * postcss-import
 * postcss-mixins
