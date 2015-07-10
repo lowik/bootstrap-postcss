@@ -1,0 +1,11 @@
+@function twbs-font-path($path) {
+
+
+
+
+  @return "<%- asset_path('$(path)'.replace(/[#?].*$/, '')) + '$(path)'.replace(/(^[^#?]*)([#?]?.*$)/, '$2') %>";
+}
+@function twbs-image-path($file) {
+  @return "<%- asset_path('$(file)') %>";
+}
+$bootstrap-sass-asset-helper: true;

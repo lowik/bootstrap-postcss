@@ -1,0 +1,9 @@
+@define-mixin bg-variant $parent, $color {
+  $(parent) {
+    background-color: $color;
+  }
+  a$(parent):hover,
+  a$(parent):focus {
+    background-color: color($color blackness(+10%));
+  }
+}

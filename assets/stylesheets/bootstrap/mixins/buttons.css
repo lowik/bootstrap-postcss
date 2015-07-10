@@ -1,0 +1,58 @@
+@define-mixin button-variant $color, $background, $border {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: color($background blackness(+10%));
+        border-color: color($border blackness(+25%));
+  }
+  &:hover {
+    color: $color;
+    background-color: color($background blackness(+10%));
+        border-color: color($border blackness(+12%));
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: color($background blackness(+10%));
+        border-color: color($border blackness(+12%));
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: color($background blackness(+17%));
+          border-color: color($border blackness(+25%));
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+@define-mixin button-size $padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}

@@ -1,0 +1,29 @@
+.container {
+  @mixin container-fixed {}
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+.container-fluid {
+  @mixin container-fixed {}
+}
+.row {
+  @mixin make-row {}
+}
+@mixin make-grid-columns {}
+@mixin make-grid xs {}
+@media (min-width: $screen-sm-min) {
+  @mixin make-grid sm {}
+}
+@media (min-width: $screen-md-min) {
+  @mixin make-grid md {}
+}
+@media (min-width: $screen-lg-min) {
+  @mixin make-grid lg {}
+}

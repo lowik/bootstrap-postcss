@@ -1,0 +1,48 @@
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: $label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+
+  &:empty {
+    display: none;
+  }
+
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+a.label {
+  &:hover,
+  &:focus {
+    color: $label-link-hover-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+.label-default {
+  @mixin label-variant $label-default-bg {}
+}
+.label-primary {
+  @mixin label-variant $label-primary-bg {}
+}
+.label-success {
+  @mixin label-variant $label-success-bg {}
+}
+.label-info {
+  @mixin label-variant $label-info-bg {}
+}
+.label-warning {
+  @mixin label-variant $label-warning-bg {}
+}
+.label-danger {
+  @mixin label-variant $label-danger-bg {}
+}

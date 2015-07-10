@@ -1,0 +1,14 @@
+@define-mixin responsive-visibility $parent {
+  $(parent) {
+    display: block !important;
+  }
+  table$(parent)  { display: table !important; }
+  tr$(parent)     { display: table-row !important; }
+  th$(parent),
+  td$(parent)     { display: table-cell !important; }
+}
+@define-mixin responsive-invisibility $parent {
+  $(parent) {
+    display: none !important;
+  }
+}

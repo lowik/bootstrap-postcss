@@ -1,0 +1,191 @@
+/*!
+ * Bootstrap v3.3.5 (http:
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https:
+ */
+@import "variables";
+@import "mixins";
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  @mixin box-shadow $shadow {}
+
+  &:active,
+  &.active {
+    @mixin box-shadow inset 0 3px 5px rgba(0,0,0,.125) {}
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    @mixin box-shadow none {}
+  }
+  .badge {
+    text-shadow: none;
+  }
+}
+@define-mixin btn-styles $btn-color: #555 {
+  @mixin gradient-vertical $start-color: $btn-color, $end-color: color($btn-color blackness(+12%));
+  @mixin reset-filter {}
+  background-repeat: repeat-x;
+  border-color: color($btn-color blackness(+14%));
+  &:hover,
+  &:focus  {
+    background-color: color($btn-color blackness(+12%));
+    background-position: 0 -15px;
+  }
+  &:active,
+  &.active {
+    background-color: color($btn-color blackness(+12%));
+    border-color: color($btn-color blackness(+14%));
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: color($btn-color blackness(+12%));
+      background-image: none;
+    }
+  }
+}
+.btn {
+
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+.btn-default { @mixin btn-styles $btn-default-bg {} text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-primary { @mixin btn-styles $btn-primary-bg {} }
+.btn-success { @mixin btn-styles $btn-success-bg {} }
+.btn-info    { @mixin btn-styles $btn-info-bg {} }
+.btn-warning { @mixin btn-styles $btn-warning-bg {} }
+.btn-danger  { @mixin btn-styles $btn-danger-bg {} }
+.thumbnail,
+.img-thumbnail {
+  @mixin box-shadow 0 1px 2px rgba(0,0,0,.075) {}
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  @mixin gradient-vertical $start-color: $dropdown-link-hover-bg, $end-color: color($dropdown-link-hover-bg blackness(+5%));
+  background-color: color($dropdown-link-hover-bg blackness(+5%));
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  @mixin gradient-vertical $start-color: $dropdown-link-active-bg, $end-color: color($dropdown-link-active-bg blackness(+5%));
+  background-color: color($dropdown-link-active-bg blackness(+5%));
+}
+.navbar-default {
+  @mixin gradient-vertical $start-color: color($navbar-default-bg, 10% lightness(+$end-color: $navbar-default-bg));
+  @mixin reset-filter {}
+  border-radius: $navbar-border-radius;
+  $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  @mixin box-shadow $shadow {}
+  .navbar-nav > .open > a,
+  .navbar-nav > .active > a {
+    @mixin gradient-vertical $start-color: color($navbar-default-link-active-bg blackness(+2%)));
+    @mixin box-shadow inset 0 3px 9px rgba(0,0,0,.075) {}
+  }
+}
+.navbar-brand,
+.navbar-nav > li > a {
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+.navbar-inverse {
+  @mixin gradient-vertical $start-color: color($navbar-inverse-bg, 10% lightness(+$end-color: $navbar-inverse-bg));
+  @mixin reset-filter {}
+  border-radius: $navbar-border-radius;
+  .navbar-nav > .open > a,
+  .navbar-nav > .active > a {
+    @mixin gradient-vertical $start-color: $navbar-inverse-link-active-bg, $end-color: color($navbar-inverse-link-active-bg lightness(+2.5%));
+    @mixin box-shadow inset 0 3px 9px rgba(0,0,0,.25) {}
+  }
+  .navbar-brand,
+  .navbar-nav > li > a {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  }
+}
+.navbar-static-top,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  border-radius: 0;
+}
+@media (max-width: $grid-float-breakpoint-max) {
+  .navbar .navbar-nav .open .dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+      @mixin gradient-vertical $start-color: $dropdown-link-active-bg, $end-color: color($dropdown-link-active-bg blackness(+5%));
+    }
+  }
+}
+.alert {
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+  $shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  @mixin box-shadow $shadow {}
+}
+@define-mixin alert-styles $color {
+  @mixin gradient-vertical $start-color: $color, $end-color: color($color blackness(+7.5%));
+  border-color: color($color blackness(+15%));
+}
+.alert-success    { @mixin alert-styles $alert-success-bg {} }
+.alert-info       { @mixin alert-styles $alert-info-bg {} }
+.alert-warning    { @mixin alert-styles $alert-warning-bg {} }
+.alert-danger     { @mixin alert-styles $alert-danger-bg {} }
+.progress {
+  @mixin gradient-vertical $start-color: color($progress-bg, 4% blackness(+$end-color: $progress-bg));
+}
+@define-mixin progress-bar-styles $color {
+  @mixin gradient-vertical $start-color: $color, $end-color: color($color blackness(+10%));
+}
+.progress-bar            { @mixin progress-bar-styles $progress-bar-bg {} }
+.progress-bar-success    { @mixin progress-bar-styles $progress-bar-success-bg {} }
+.progress-bar-info       { @mixin progress-bar-styles $progress-bar-info-bg {} }
+.progress-bar-warning    { @mixin progress-bar-styles $progress-bar-warning-bg {} }
+.progress-bar-danger     { @mixin progress-bar-styles $progress-bar-danger-bg {} }
+.progress-bar-striped {
+  @mixin gradient-striped {}
+}
+.list-group {
+  border-radius: $border-radius-base;
+  @mixin box-shadow 0 1px 2px rgba(0,0,0,.075) {}
+}
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  text-shadow: 0 -1px 0 color($list-group-active-bg blackness(+10%));
+  @mixin gradient-vertical $start-color: $list-group-active-bg, $end-color: color($list-group-active-bg blackness(+7.5%));
+  border-color: color($list-group-active-border blackness(+7.5%));
+  .badge {
+    text-shadow: none;
+  }
+}
+.panel {
+  @mixin box-shadow 0 1px 2px rgba(0,0,0,.05) {}
+}
+@define-mixin panel-heading-styles $color {
+  @mixin gradient-vertical $start-color: $color, $end-color: color($color blackness(+5%));
+}
+.panel-default > .panel-heading   { @mixin panel-heading-styles $panel-default-heading-bg {} }
+.panel-primary > .panel-heading   { @mixin panel-heading-styles $panel-primary-heading-bg {} }
+.panel-success > .panel-heading   { @mixin panel-heading-styles $panel-success-heading-bg {} }
+.panel-info > .panel-heading      { @mixin panel-heading-styles $panel-info-heading-bg {} }
+.panel-warning > .panel-heading   { @mixin panel-heading-styles $panel-warning-heading-bg {} }
+.panel-danger > .panel-heading    { @mixin panel-heading-styles $panel-danger-heading-bg {} }
+.well {
+  @mixin gradient-vertical $start-color: color($well-bg, 5% blackness(+$end-color: $well-bg));
+  border-color: color($well-bg blackness(+10%));
+  $shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  @mixin box-shadow $shadow {}
+}
