@@ -40,19 +40,19 @@ var parseColorFunction = function(colorFunc, result) {
 	}
 };
 
-var RemoveInlineComment = function(options) {
+var ConvertToPostCSS = function(options) {
   // allow use without new
-  if (!(this instanceof RemoveInlineComment)) {
-    return new RemoveInlineComment(options);
+  if (!(this instanceof ConvertToPostCSS)) {
+    return new ConvertToPostCSS(options);
   }
 
   // init Transform
   Transform.call(this, options);
 };
 
-util.inherits(RemoveInlineComment, Transform);
+util.inherits(ConvertToPostCSS, Transform);
 
-RemoveInlineComment.prototype._transform = function(chunk, encoding, callback) {
+ConvertToPostCSS.prototype._transform = function(chunk, encoding, callback) {
 
 
 	// TODO: fixme @fonf-face in glyphicons.css (remove manually to test)
@@ -67,7 +67,7 @@ RemoveInlineComment.prototype._transform = function(chunk, encoding, callback) {
 		line = line.substring(0, commentIdx);
 	}
 
-	// Fix icon-font-path
+	// Fix icon-font-path (yes this is ugly)
 	if (line === '$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/") !default;') {
 		line = '$icon-font-path: "../fonts/bootstrap/");';
 	}
@@ -107,7 +107,7 @@ RemoveInlineComment.prototype._transform = function(chunk, encoding, callback) {
 	line = line.replace(/\#\{\$([a-z]+)\}/ig, '$($1)');
 
 
-	// Special case of import deps
+	// Special case of import deps (yes this is ugly)
 	if (line === '@import "mixins/vendor-prefixes";') {
 		line = '@import "mixins/border-radius";\n' + line;
 	} else if (line === '@import "mixins/progress-bar";') {
@@ -197,10 +197,10 @@ var cleanFiles = function(directory) {
 
 			var newFile = path.join(directory, cleanFileName + '.css');
 
-			var removeInlineComment = new RemoveInlineComment();
+			var convertToPostCSS = new ConvertToPostCSS();
 
 			byline(fs.createReadStream(file))
-				.pipe(removeInlineComment)
+				.pipe(convertToPostCSS)
 				.pipe(fs.createWriteStream(newFile));
 
 			fs.unlink(file);
