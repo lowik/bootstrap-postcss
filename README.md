@@ -8,3 +8,4 @@ Convert bootstrap sass to postcss
 * postcss-mixins
 * postcss-nested
 * postcss-simple-vars
+* postcss-color-function
