@@ -32,7 +32,7 @@ Don't forget adding them
 
 This project is work in progress and not all boostrap sass usage supported (@extend, if, twbs-font-path)
 
-For example, you should remove the @font-face directive of glyphicons.css to don't have error. Of cours Glyphicons don't works.
+For example, you should remove the @at-root and @font-face directives of glyphicons.css to don't have error. Of cours Glyphicons don't works.
 
 ```css
 @at-root {
