@@ -1,5 +1,5 @@
 @define-mixin make-grid-columns $i: 1, $list: ".col-xs-$(i), .col-sm-$(i), .col-md-$(i), .col-lg-$(i)" {
-  @for $i from (1 + 1) through $grid-columns {
+  @for $i from (calc(1 + 1)) through $grid-columns {
     $list: "$(list), .col-xs-$(i), .col-sm-$(i), .col-md-$(i), .col-lg-$(i)";
   }
   $(list) {
@@ -12,7 +12,7 @@
   }
 }
 @define-mixin float-grid-columns $class, $i: 1, $list: ".col-$(class)-$(i)" {
-  @for $i from (1 + 1) through $grid-columns {
+  @for $i from (calc(1 + 1)) through $grid-columns {
     $list: "$(list), .col-$(class)-$(i)";
   }
   $(list) {

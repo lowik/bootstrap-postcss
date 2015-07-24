@@ -24,7 +24,7 @@
 }
 .alert-dismissable,
 .alert-dismissible {
-  padding-right: ($alert-padding + 20);
+  padding-right: (calc($alert-padding + 20));
 
   .close {
     position: relative;

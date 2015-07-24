@@ -40,6 +40,60 @@ var parseColorFunction = function(colorFunc, result) {
 	}
 };
 
+var isValidOperand = function(operand) {
+	return operand[0] === '$' || !isNaN(parseFloat(operand, 10));
+};
+
+var processCalcExpression = function(line) {
+	var openIdx = line.indexOf('(');
+	var closeIdx = line.lastIndexOf(')');
+
+	if (openIdx >= 0 && closeIdx > 0) {
+
+		var firstLinePart = line.substring(0, openIdx + 1);
+		var secondLinePart = line.substring(closeIdx, line.length);
+		var exp = line.substring(openIdx + 1, closeIdx);
+
+		var addOperatorIdx = exp.lastIndexOf('+');
+		var subOperatorIdx = exp.lastIndexOf('-');
+		var multOperatorIdx = exp.lastIndexOf('*');
+		var divOperatorIdx = exp.lastIndexOf('/');
+		var operatorIdx = Math.max(addOperatorIdx, subOperatorIdx, multOperatorIdx, divOperatorIdx);
+
+		console.log('Check if we have a calc value for line : ' + line);
+		console.log('firstLinePart: ' + firstLinePart);
+		console.log('secondLinePart: ' + secondLinePart);
+		console.log('exp: ' + exp);
+		console.log('operatorIdx: ' + operatorIdx);
+
+		if (operatorIdx > 0) {
+			var operator = exp[operatorIdx];
+			var operand1 = trim(exp.substr(0, operatorIdx));
+			var operand2 = trim(exp.substr(operatorIdx + 1, exp.length));
+
+			// Check operand is number or variable
+
+			if (!isValidOperand(operand1) || operand1.indexOf(' ') > 0 || operand1.indexOf(',') >= 0 || operand1.indexOf('(') >= 0
+					|| !isValidOperand(operand2) || operand2.indexOf(' ') > 0 || operand2.indexOf(',') >= 0 || operand2.indexOf('(') >= 0) {
+				// ignore
+				//console.log('ignore line: ' + line);
+			} else {
+				console.log('operator: ' + operator);
+				console.log('operand1: ' + operand1);
+				console.log('operand2: ' + operand2);
+
+				if (operand1 && operand2 && operand1.length > 0 && operand2.length > 0) {
+					line = firstLinePart + 'calc(' + operand1 + ' ' + operator + ' ' + operand2 + ')' + secondLinePart;
+
+					console.log('line: ' + line);
+				}
+			}
+		}
+	}
+
+	return line;
+};
+
 var ConvertToPostCSS = function(options) {
   // allow use without new
   if (!(this instanceof ConvertToPostCSS)) {
@@ -56,7 +110,7 @@ ConvertToPostCSS.prototype._transform = function(chunk, encoding, callback) {
 
 
 	// TODO: fixme @fonf-face in glyphicons.css (remove manually to test)
-
+	var firstLinePart, secondLinePart;
 
 	var line = chunk.toString();
 	//var trimmedLine = trim(line);
@@ -130,8 +184,8 @@ ConvertToPostCSS.prototype._transform = function(chunk, encoding, callback) {
 	}
 
 	if (minIdx >= 0) {
-		var firstLinePart = line.substring(0, minIdx);
-		var secondLinePart = line.substring(minIdx, line.length);
+		firstLinePart = line.substring(0, minIdx);
+		secondLinePart = line.substring(minIdx, line.length);
 
 		//console.log('firstLinePart: ' + firstLinePart);
 		//console.log('secondLinePart: ' + secondLinePart);
@@ -165,6 +219,11 @@ ConvertToPostCSS.prototype._transform = function(chunk, encoding, callback) {
 		line = firstLinePart + color;
 		//console.log('result: ' + line);
 	}
+
+
+	// Calc
+	line = processCalcExpression(line);
+
 
 	if (line !== '') {
 		this.push(line + '\n');
@@ -208,6 +267,9 @@ var cleanFiles = function(directory) {
 	});
 };
 
+
+var line = '  font-size: ($font-size-base - 1); ';
+console.log(processCalcExpression(line));
 
 var bootstrapSassModule = path.join(process.cwd(), 'node_modules/bootstrap-sass');
 if (!fs.existsSync(bootstrapSassModule)) {

@@ -1,8 +1,8 @@
 @define-mixin container-fixed $gutter: $grid-gutter-width {
   margin-right: auto;
   margin-left: auto;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
+  padding-left:  (calc($gutter / 2));
+  padding-right: (calc($gutter / 2));
   @mixin clearfix {}
 }
 @define-mixin make-row $gutter: $grid-gutter-width {
@@ -15,8 +15,8 @@
   float: left;
   width: percentage(($columns / $grid-columns));
   min-height: 1px;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
+  padding-left:  (calc($gutter / 2));
+  padding-right: (calc($gutter / 2));
 }
 @define-mixin make-xs-column-offset $columns {
   margin-left: percentage(($columns / $grid-columns));
@@ -30,8 +30,8 @@
 @define-mixin make-sm-column $columns, $gutter: $grid-gutter-width {
   position: relative;
   min-height: 1px;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
+  padding-left:  (calc($gutter / 2));
+  padding-right: (calc($gutter / 2));
   @media (min-width: $screen-sm-min) {
     float: left;
     width: percentage(($columns / $grid-columns));
@@ -55,8 +55,8 @@
 @define-mixin make-md-column $columns, $gutter: $grid-gutter-width {
   position: relative;
   min-height: 1px;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
+  padding-left:  (calc($gutter / 2));
+  padding-right: (calc($gutter / 2));
   @media (min-width: $screen-md-min) {
     float: left;
     width: percentage(($columns / $grid-columns));
@@ -80,8 +80,8 @@
 @define-mixin make-lg-column $columns, $gutter: $grid-gutter-width {
   position: relative;
   min-height: 1px;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
+  padding-left:  (calc($gutter / 2));
+  padding-right: (calc($gutter / 2));
   @media (min-width: $screen-lg-min) {
     float: left;
     width: percentage(($columns / $grid-columns));

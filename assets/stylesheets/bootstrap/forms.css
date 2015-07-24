@@ -12,7 +12,7 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: $line-height-computed;
-  font-size: ($font-size-base * 1.5);
+  font-size: (calc($font-size-base * 1.5));
   line-height: inherit;
   color: $legend-color;
   border: 0;
@@ -51,7 +51,7 @@ input[type="checkbox"]:focus {
 }
 output {
   display: block;
-  padding-top: ($padding-base-vertical + 1);
+  padding-top: (calc($padding-base-vertical + 1));
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $input-color;
@@ -185,8 +185,8 @@ input[type="checkbox"] {
 }
 .form-control-static {
 
-  padding-top: ($padding-base-vertical + 1);
-  padding-bottom: ($padding-base-vertical + 1);
+  padding-top: (calc($padding-base-vertical + 1));
+  padding-bottom: (calc($padding-base-vertical + 1));
 
   margin-bottom: 0;
   min-height: ($line-height-computed + $font-size-base);
@@ -216,7 +216,7 @@ input[type="checkbox"] {
   .form-control-static {
     height: $input-height-small;
     min-height: ($line-height-computed + $font-size-small);
-    padding: ($padding-small-vertical + 1) $padding-small-horizontal;
+    padding: (calc($padding-small-vertical + 1)) $padding-small-horizontal;
     font-size: $font-size-small;
     line-height: $line-height-small;
   }
@@ -241,7 +241,7 @@ input[type="checkbox"] {
   .form-control-static {
     height: $input-height-large;
     min-height: ($line-height-computed + $font-size-large);
-    padding: ($padding-large-vertical + 1) $padding-large-horizontal;
+    padding: (calc($padding-large-vertical + 1)) $padding-large-horizontal;
     font-size: $font-size-large;
     line-height: $line-height-large;
   }
@@ -251,7 +251,7 @@ input[type="checkbox"] {
   position: relative;
 
   .form-control {
-    padding-right: ($input-height-base * 1.25);
+    padding-right: (calc($input-height-base * 1.25));
   }
 }
 .form-control-feedback {
@@ -291,7 +291,7 @@ input[type="checkbox"] {
 }
 .has-feedback label {
   & ~ .form-control-feedback {
-     top: ($line-height-computed + 5);
+     top: (calc($line-height-computed + 5));
   }
   &.sr-only ~ .form-control-feedback {
      top: 0;
@@ -375,7 +375,7 @@ input[type="checkbox"] {
   .checkbox-inline {
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: ($padding-base-vertical + 1);
+    padding-top: (calc($padding-base-vertical + 1));
   }
 
 
@@ -393,7 +393,7 @@ input[type="checkbox"] {
     .control-label {
       text-align: right;
       margin-bottom: 0;
-      padding-top: ($padding-base-vertical + 1);
+      padding-top: (calc($padding-base-vertical + 1));
     }
   }
 
@@ -418,7 +418,7 @@ input[type="checkbox"] {
   .form-group-sm {
     @media (min-width: $screen-sm-min) {
       .control-label {
-        padding-top: ($padding-small-vertical + 1);
+        padding-top: (calc($padding-small-vertical + 1));
         font-size: $font-size-small;
       }
     }
